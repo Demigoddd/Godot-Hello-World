@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7gsoga2slrtu"]
+
+[ext_resource type="PackedScene" uid="uid://b82b2wjhuchkl" path="res://scenes/label.tscn" id="1_cggig"]
+[ext_resource type="PackedScene" uid="uid://bfgh57sw7lwpq" path="res://scenes/wall.tscn" id="2_arce0"]
+[ext_resource type="PackedScene" uid="uid://dg3qn57xfrxap" path="res://scenes/ball.tscn" id="3_jgdu3"]
+[ext_resource type="PackedScene" uid="uid://dws16m4u8ammc" path="res://scenes/hero.tscn" id="4_hbrck"]
+
+[node name="Node" type="Node"]
+
+[node name="Label" parent="." instance=ExtResource("1_cggig")]
+offset_left = -90.5
+offset_right = 90.5
+offset_bottom = 45.0
+
+[node name="WallContainer" type="Node" parent="."]
+
+[node name="Wall1" parent="WallContainer" instance=ExtResource("2_arce0")]
+position = Vector2(236, 555)
+
+[node name="Wall2" parent="WallContainer" instance=ExtResource("2_arce0")]
+position = Vector2(537, 515)
+rotation = 0.261799
+
+[node name="Wall3" parent="WallContainer" instance=ExtResource("2_arce0")]
+position = Vector2(919, 555)
+
+[node name="Wall4" parent="WallContainer" instance=ExtResource("2_arce0")]
+z_index = -1
+position = Vector2(1155, 378)
+rotation = -0.523598
+
+[node name="Wall5" parent="WallContainer" instance=ExtResource("2_arce0")]
+z_index = -1
+position = Vector2(-47, 380)
+rotation = 0.523598
+
+[node name="Wall6" parent="WallContainer" instance=ExtResource("2_arce0")]
+position = Vector2(603, 510)
+rotation = -0.261799
+
+[node name="BallContainer" type="Node" parent="."]
+
+[node name="Ball1" parent="BallContainer" instance=ExtResource("3_jgdu3")]
+position = Vector2(1068, 86)
+gravity_scale = 1.0
+
+[node name="Ball2" parent="BallContainer" instance=ExtResource("3_jgdu3")]
+position = Vector2(622, 86)
+gravity_scale = 10.0
+
+[node name="Ball3" parent="BallContainer" instance=ExtResource("3_jgdu3")]
+position = Vector2(139, 91)
+
+[node name="Hero" parent="." instance=ExtResource("4_hbrck")]
+
+[node name="Camera2D" type="Camera2D" parent="Hero"]
+rotation = -3.14159
+scale = Vector2(43.5329, -1.74047)
+zoom = Vector2(0.5, 0.5)
+
+[node name="Button" type="Button" parent="."]
+offset_right = 128.0
+offset_bottom = 64.0
+text = "Switch"
+
+[connection signal="pressed" from="Button" to="Hero" method="OnButtonPressed"]

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dws16m4u8ammc"]
+
+[ext_resource type="Texture2D" uid="uid://djtw543bp4xg3" path="res://assets/icon.svg" id="1_uddgx"]
+[ext_resource type="Script" path="res://scripts/Hero.cs" id="2_h3xlf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4r1xu"]
+size = Vector2(128, 128)
+
+[node name="Hero" type="CharacterBody2D"]
+script = ExtResource("2_h3xlf")
+
+[node name="Hero" type="Sprite2D" parent="."]
+scale = Vector2(0.895, 0.895)
+texture = ExtResource("1_uddgx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4r1xu")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true

@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://b82b2wjhuchkl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ltq7q"]
+font_size = 32
+
+[node name="Label" type="Label"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -45.5
+offset_right = 45.5
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Hello World"
+label_settings = SubResource("LabelSettings_ltq7q")
