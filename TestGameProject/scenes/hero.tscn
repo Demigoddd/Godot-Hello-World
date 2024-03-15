@@ -4,17 +4,19 @@
 [ext_resource type="Script" path="res://scripts/Hero.cs" id="2_h3xlf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4r1xu"]
-size = Vector2(128, 128)
+size = Vector2(126, 126)
 
 [node name="Hero" type="CharacterBody2D"]
 script = ExtResource("2_h3xlf")
 
-[node name="Hero" type="Sprite2D" parent="."]
-scale = Vector2(0.895, 0.895)
+[node name="HeroIcon" type="Sprite2D" parent="."]
 texture = ExtResource("1_uddgx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="HeroCollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_4r1xu")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="HeroTimer" type="Timer" parent="."]
+wait_time = 0.5
 autostart = true
+
+[connection signal="timeout" from="HeroTimer" to="." method="onTimerTimeout"]
