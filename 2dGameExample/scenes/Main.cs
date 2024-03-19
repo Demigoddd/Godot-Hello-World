@@ -6,29 +6,28 @@ public partial class Main : Node
 	[Export] public PackedScene MobScene { get; set; }
 	private int _score;
 
-	public override void _Ready()
-	{
-		NewGame();
-	}
-
-	public override void _Process(double delta)
-	{
-	}
-
 	public void GameOver()
 	{
 		GetNode<Timer>("MobTimer").Stop();
 		GetNode<Timer>("ScoreTimer").Stop();
 		GetNode<Timer>("StartTimer").Stop();
+
+		GetNode<HUD>("HUD").ShowGameOver();
 	}
 
 	public void NewGame()
 	{
+		GetTree().CallGroup("mobs", Node.MethodName.QueueFree);
+
 		_score = 0;
 
+		var hud = GetNode<HUD>("HUD");
 		var player = GetNode<Player>("Player");
 		var startPosition = GetNode<Marker2D>("StartPosition");
+
 		player.Start(startPosition.Position);
+		hud.UpdateScore(_score);
+		hud.ShowMessage("Get Ready!");
 
 		GetNode<Timer>("StartTimer").Start();
 	}
@@ -36,6 +35,8 @@ public partial class Main : Node
 	private void OnScoreTimerTimeout()
 	{
 		_score++;
+
+		GetNode<HUD>("HUD").UpdateScore(_score);
 	}
 
 	private void OnStartTimerTimeout()
