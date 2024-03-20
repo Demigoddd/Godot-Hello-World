@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://dso7e77qxxm1q"]
+[gd_scene load_steps=4 format=3 uid="uid://dso7e77qxxm1q"]
 
 [ext_resource type="Script" path="res://scenes/hud/HUD.cs" id="1_wri1x"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_8vxed"]
+action = &"start_game"
+
+[sub_resource type="Shortcut" id="Shortcut_ahold"]
+events = [SubResource("InputEventAction_8vxed")]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_wri1x")
@@ -53,6 +59,7 @@ offset_bottom = -148.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 32
+shortcut = SubResource("Shortcut_ahold")
 text = "Start"
 
 [node name="MessageTimer" type="Timer" parent="."]
