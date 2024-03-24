@@ -31,7 +31,18 @@ public partial class HUD : CanvasLayer
 
 	public void UpdateScore(int score)
 	{
-		GetNode<Label>("ScoreLabel").Text = score.ToString();
+		var scoreLabel = GetNode<Label>("ScoreLabel");
+		scoreLabel.Text = score.ToString();
+
+		if (Int32.Parse(scoreLabel.Text) <= 5) {
+			scoreLabel.Set("theme_override_colors/font_color", new Color(0,1,0,1));
+		} else if (Int32.Parse(scoreLabel.Text) <= 10) {
+			scoreLabel.Set("theme_override_colors/font_color", new Color(1,1,0,1));
+		} else if (Int32.Parse(scoreLabel.Text) <= 15) {
+			scoreLabel.Set("theme_override_colors/font_color", new Color(1,0,0,1));
+		} else {
+			scoreLabel.Set("theme_override_colors/font_color", new Color(1,1,1,1));
+		}
 	}
 
 	private void OnStartButtonPressed()
